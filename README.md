@@ -1,11 +1,14 @@
-* 0x00.Shell, basics
-** overview:
+# ALX SYSTEM ENGINEERING DEVOPS
+This repo contains the following project directories:
 
-this project deals with the following:
-1. what shell is
-2. navigating through command line
-3. manipulating files using command line
-4. working with command line
-5. keyboard shortcuts for bash
-6. LTS - Long Term Support
-7. shebang...
+### * 0x00-shell_basics
+* what shell is
+* navigation
+* looking around
+* a guided tour around shell
+* manipulating files
+* working with commands
+* reading man pages
+* keyboard shortcuts for Bash
+* LTS
+* shebang
