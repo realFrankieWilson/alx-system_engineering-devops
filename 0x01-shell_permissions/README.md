@@ -43,4 +43,4 @@ the command chmod 754 gives rwx to the owner r-x to groups and  r-- to others.
 ## Task 7.
 * Everybody!.
 chmod 555 gives r-x to all users.
-
+....
