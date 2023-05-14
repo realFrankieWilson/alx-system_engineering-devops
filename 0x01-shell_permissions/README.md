@@ -42,6 +42,5 @@ the command chmod 754 gives rwx to the owner r-x to groups and  r-- to others.
 
 ## Task 7.
 * Everybody!.
-The command chmod 771 gives permissions to the owner (rwx), groups (rwx) and others (x).
-
+chmod 555 gives r-x to all users.
 
