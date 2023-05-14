@@ -22,7 +22,7 @@ This script prints the effective username of the current user.
 
 ## Task 2.
 * Groups
-id: prints all the groups the current user is part of.
+groups: prints all the groups the current user is part of.
 
 ## Task 3.
 * New owner
@@ -34,5 +34,14 @@ touch: is use to create an empty file
 
 ## Task 5.
 * Execute
-chmod with option 100 adds an execution permission a file
+chmod with option 744 adds an execution permission a file
+
+## Task 6.
+* Multiple permissions
+the command chmod 754 gives rwx to the owner r-x to groups and  r-- to others.
+
+## Task 7.
+* Everybody!.
+The command chmod 771 gives permissions to the owner (rwx), groups (rwx) and others (x).
+
 
