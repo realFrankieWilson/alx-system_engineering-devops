@@ -12,3 +12,4 @@ This repo contains the following project directories:
 * keyboard shortcuts for Bash
 * LTS
 * shebang
+### * 0x01-shel_permissions
