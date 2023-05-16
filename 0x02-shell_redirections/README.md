@@ -86,8 +86,20 @@ If the file ls_cwd_content already exists, it should be overwritten. If the file
 
 ### 13. Being unique is better than being perfect
 * Takes a list of words as input and prnts only words that appear exactly once.
-	* input format: One line, one word
-	* Output format: One line, one word
-	* Words should be sorted
+* input format: One line, one word
+* Output format: One line, one word
+* Words should be sorted
 	
+### 14. It must be in that file
+* Displays lines containing the pattern "root" from the file /etc/passwd
 
+### 15. Count that word
+* Displays the number of lines that's contained in the pattern "bin" in the file /etc/passwd
+
+### 16. What's next?
+* Displays lnes containing the pattern "root" and 3 lines after them in the file /etc/passwd.
+
+### 17. I hate bins
+* Displays all the lines in the file /etc/passwd that do not contain the pattern "bin"
+
+### 18. Letters only please
