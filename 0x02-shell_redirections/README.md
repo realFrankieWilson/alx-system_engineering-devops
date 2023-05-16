@@ -103,3 +103,37 @@ If the file ls_cwd_content already exists, it should be overwritten. If the file
 * Displays all the lines in the file /etc/passwd that do not contain the pattern "bin"
 
 ### 18. Letters only please
+* Displays all lines of the file /etc/ssh/sshd_config starting with a letter
+* Including capital letters as well
+
+### 19. A to Z
+* Replaces all characters A and c from input Z and e respectively.
+
+### 20. Without C, you would live in hiago
+* Creates a script that removes all letters c and C from input.
+
+### 21. esreveR
+* This script reverse its input.
+
+### 22. DJ Cut Killer
+* Write a script that displays all users and their home directories, sorted by users.
+* Based on the /etc/passed file
+
+### 23. Empty casks make the most noise
+* Finds all empty files and directories in the current directory and all sub-directories.
+* Only the names of the files and directories should be displayed (not the entire path)
+* Hidden files should be listed
+* One file name per line
+* The listing should end with a new line
+* basename, grep, egrep, fgrep or rgrep are not to be used
+
+### 24 A gif is worth ten thousand words
+* Write a script that lists all the files with a .gif extension in the current directory and all its sub-directories.
+
+* Hidden files should be listed
+* Only regular files (not directories) should be listed
+* The names of the files should be displayed without their extensions
+* The files should be sorted by byte values, but case-insensitive (file aaa should be listed before file bbb, file .b should be listed before file a, and file Rona should be listed after file jay)
+* One file name per line
+* The listing should end with a new line
+* basename, grep, egrep, fgrep or rgrep are not to be used
