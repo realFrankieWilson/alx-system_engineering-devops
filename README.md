@@ -1,7 +1,7 @@
 # ALX SYSTEM ENGINEERING DEVOPS
 This repo contains the following project directories:
 
-* ## 0x00-shell_basics
+## 0x00. shell basics
 * what shell is
 * navigation
 * looking around
@@ -13,8 +13,15 @@ This repo contains the following project directories:
 * LTS
 * shebang
 
-## 0x01-shel_permissions
+## 0x01-shel permissions
 * Permissions
 
-## 0x04-loops_condions_and_parsing
+## 0x04. loops condions and parsing
+
+## 0x05. Processes and signals
+* PID
+* Process
+* Process ID
+* Kill process
+* Signal
 
