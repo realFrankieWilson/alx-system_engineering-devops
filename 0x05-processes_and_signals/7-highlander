@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Displays the PID, along with the process name
 
-trap "echo I am invicible!!!" SIGTERM
+trap "echo I am invincible!!!" SIGTERM
 while :
 do
 	echo "To infinity and beyond"
