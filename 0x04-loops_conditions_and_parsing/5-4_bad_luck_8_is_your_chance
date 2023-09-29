@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Loops from 1 to 10 and:
+#+	displays bad luck for the 4th loop
+#+	good luck for the 8th loop iteration
+#+	displays Best School for other iterations.
+
+var=1
+
+while [ $var -lt 11 ]
+do
+	if [ $var -eq 4 ]
+	then
+		echo "bad luck"
+	elif [ $var -eq 8 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+
+	((var++))
+done

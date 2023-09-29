@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Displays "Best School" 10 times, but if the 9th iteration, displays
+#+ "Best School" and then "Hi" on a new line.
+
+var=1
+
+while [ $var -lt 11 ]
+do
+	if [ $var -eq 9 ]
+	then
+		echo "Hi"
+	fi
+
+	echo "Best School"
+	((var++))
+done

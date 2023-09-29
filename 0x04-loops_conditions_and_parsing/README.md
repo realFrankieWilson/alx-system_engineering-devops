@@ -14,4 +14,20 @@
 
 
 ##### 0. Create a SSH RSA Key pair
+	Create a RSA key pair.
+
+
+##### 1. For Best School loop
+	Write a Bash script that displays Best School 10 times.
+*	    You must use the for loop(while and until are forbidden)
+
+
+##### 2. While Best School loop
+	Write a Bash script that displays Best School 10 times.
+*	    You must use the While loop(for and until are forbidden)
+
+
+##### 3. Until Best School loop
+	Write a Bash script that displays Best School 10 times.
+*	    You must use the until loop(for and while are forbidden)
 
