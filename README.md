@@ -16,4 +16,5 @@ This repo contains the following project directories:
 ## 0x01-shel_permissions
 * Permissions
 
-## * 
+## 0x04-loops_condions_and_parsing
+
