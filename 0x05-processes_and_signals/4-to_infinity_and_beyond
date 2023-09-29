@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Displays "To infinity and beyond " indefinitely.
+# Requirements:
+#				In between each iteration of the loop, add a sleep 2
+
+var=1
+
+while [[ var -gt 0 ]]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
