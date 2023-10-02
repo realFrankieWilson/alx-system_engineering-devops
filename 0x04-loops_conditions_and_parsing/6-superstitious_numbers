@@ -4,7 +4,7 @@
 #	displays 9 and then bad luck from Japan for the 9th loop iteration
 #	displays 17 and then bad luc from Italy for the 17th loop iteration
 
-var=0
+var=1
 
 while [ $var -le 20 ]
 do
