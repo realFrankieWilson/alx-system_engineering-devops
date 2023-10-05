@@ -25,3 +25,10 @@ This repo contains the following project directories:
 * Kill process
 * Signal
 
+## 0x05. Regular expressions
+* Regular expressions - basics
+* Regular expressions - advanced
+* Rubular is you best friend
+* Use a regular expression against a problem: now and you have 2 problems
+* Learn Regular Expressions with simple, interactive exercises.
+
