@@ -1,11 +1,11 @@
 ## 0x09. Web infrastructure design
 
 ###### Concepts:
-	* [DSN](https://intranet.alxswe.com/concepts/12)
-	* [Monitoring](https://intranet.alxswe.com/concepts/13)
-	* [Network basics](https://intranet.alxswe.com/concepts/17)
-	* [Load balancer](https://intranet.alxswe.com/concepts/46)
-	* [Server](https://intranet.alxswe.com/concepts/67)
+* [DSN](https://intranet.alxswe.com/concepts/12)
+* [Monitoring](https://intranet.alxswe.com/concepts/13)
+* [Network basics](https://intranet.alxswe.com/concepts/17)
+* [Load balancer](https://intranet.alxswe.com/concepts/46)
+* [Server](https://intranet.alxswe.com/concepts/67)
 
 
 #### General Objectives:
