@@ -17,3 +17,13 @@ On ubuntu 20.04
 		$ apt-get install -y ruby-shadow
 		$ apt-get install -y puppet
 
+
+
+### Files:
+####	0-create\_a\_file.pp
+
+####	1-install\_a\_package.pp
+
+####	2-execute\_a\_command.pp
+
+
