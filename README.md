@@ -48,3 +48,9 @@ This repo contains the following project directories:
 * What is ping /ICMP
 * Positional parameters
 
+## 0x08. networking basics 2
+* what is localhost/127.0.0.1
+* what is 0.0.0.0
+* what is /etc/hosts
+* How to display your machine's active network interfaces.
+
