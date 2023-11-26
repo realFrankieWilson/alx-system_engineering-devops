@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# This script uses a private key to connect to a server.
 # ss - i /path/to/private_key  username@server_ip_addrese the i parameter enforces the path to the private key.
 
-ssh -i /.ssh/school ubuntu@52.86.205.212
+KEY_PATH="~/.ssh/school"
+USER_NAME="ubuntu"
+IP_ADD="52.86.205.212"
+
+ssh -i $"KEY_PATH" $"USER_NAME@$IP_ADD"
