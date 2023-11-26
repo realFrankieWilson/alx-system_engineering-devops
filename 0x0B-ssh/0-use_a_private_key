@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # This script uses a private key to connect to a server.
 
 # ss - i /path/to/private_key  username@server_ip_addrese the i parameter enforces the path to the private key.
