@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Creaes an RSA key pair.
+# -t option specifies the type of key to be generated.(RSA if no agument passed)
+
+# The default key file name
+KEY_NAME="school"
+
+# The passphrase to be used
+PASS_PH="betty"
+
+# The specified number of bits
+BITS=4096
+
+# Key generation
+echo -e "$PASS_PH\n$PASS_PH" | ssh-keygen -t rsa -b $BITS -f "$KEY_NAME" -N ""
