@@ -13,4 +13,4 @@ PASS_PH="betty"
 BITS=4096
 
 # Key generation
-echo -e "$PASS_PH\n$PASS_PH" | ssh-keygen -t rsa -b $BITS -f "$KEY_NAME" -N ""
+echo -e "$PASS_PH\n$PASS_PH" | ssh-keygen -t rsa -b $BITS -f "$KEY_NAME"
