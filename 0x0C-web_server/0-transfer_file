@@ -6,10 +6,6 @@
 #        3. The username scp connects with
 #        4. The path to the SSH private key that scp uses.
 
-#echo "wow"${#my_array}
-#echo "${my_array[@]}"
-#echo "The length of my arguments: $length"
-
 # Check if the number of arguments is equal to 5
 if [[ $# -eq 4 ]]
 then
@@ -18,10 +14,10 @@ then
 	ip=$2
 	username=$3
 	path_to_key=$4
-	remote_path="~/"
+	#remote_path=$HOME
 
 	# Use the scp command to transfer the file
-	scp -i "$path_to_key" "$path_to_file" "$username@$ip:$remote_path"
+	scp -i "$path_to_key" "$path_to_file" "$username@$ip:~/"
 
 else
 	# Print Usage message
