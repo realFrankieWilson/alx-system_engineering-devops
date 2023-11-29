@@ -7,7 +7,7 @@
 #        4. The path to the SSH private key that scp uses.
 
 # Check if the number of arguments is equal to 5
-if [[ $# -eq 4 ]]
+if [[ $# -gt 3 ]]
 then
 	# Assign the cmdl argument to variables.
 	path_to_file=$1
