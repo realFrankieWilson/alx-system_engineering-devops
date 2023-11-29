@@ -14,10 +14,10 @@ then
 	ip=$2
 	username=$3
 	path_to_key=$4
-	#remote_path=$HOME
+	host_check="StrickHostKeyChecking=no"
 
 	# Use the scp command to transfer the file
-	scp -i "$path_to_key" "$path_to_file" "$username@$ip:~/"
+	scp -o "$host_check" -i "$path_to_key" "$path_to_file" "$username@$ip:~/"
 
 else
 	# Print Usage message
