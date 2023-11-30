@@ -3,9 +3,11 @@
 #	Listen to port 80.
 #	Returns a string "Hello world!" When querried using a GET request
 #	eg curl localhost
+#	redirects index to /redirect me
 
 apt-get -y update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
 sudo service nginx start
