@@ -3,8 +3,9 @@
 #	Listen to port 80.
 #	Returns a string "Hello world!" When querried using a GET request
 #	eg curl localhost
+
 apt-get update
 apt-get -y install nginx
 ufw allow 'Nginx HTTP'
-echo "Hello world" >> /var/www/html/index.html
+echo "Hello World" > /var/www/html/index.html
 service nginx start
