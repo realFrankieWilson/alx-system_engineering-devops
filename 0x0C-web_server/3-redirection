@@ -1,13 +1,18 @@
-#!/usr/bin/env bash
-# A script that configures a new Ubuntu machine to
-#	Listen to port 80.
-#	Returns a string "Hello world!" When querried using a GET request
-#	eg curl localhost
-#	redirects index to /redirect me
+# update and install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
-apt-get -y update
-apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+# write a text using echo to index.html file
 echo "Hello World!" | sudo tee /var/www/html/index.html
-string_repl="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
-sudo sed -i "s/server_name _;/$string_repl/" /etc/nginx/sites-enabled/default
-sudo service nginx start
+
+# variable containing string and directive
+#string_rep="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+
+# use sed to replace text
+#sudo sed -i "s/server_name _;/$string_rep/" /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/ permanent;' /etc/nginx/sites-available/default
+# restart the nginx service
+sudo service nginx restart
+
