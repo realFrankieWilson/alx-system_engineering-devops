@@ -7,14 +7,12 @@ sudo apt-get install -y nginx
 # Redirects a specific endpoint (eg: redirect_me to https://youtupe.com)
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-#variable that stores the string
-string_repl="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com/watch?v=QH2-TGUlwu permanent;"
-sudo sed -i "s/server_name _;/$string_repl/" /etc/nginx/sites-enabled/default
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
 
-# A configured Nginx server to have a custom 404 page with a text "Ceci n'est pas une page"
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
-string_rep="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
-sudo sed -i "s/listen 80 default_server;/$string_rep/" /etc/nginx/sites-enabled/default
+str_rep="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+
+errerpage="\n\terrer_page 404 \/404.html;\n\tlocation = 404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;}"
+sed -i "s/server_name _;/$str_rep$errorpage/" /etc/nginx/sites-available/default
 
 # Restart nginx server
 sudo service nginx restart
