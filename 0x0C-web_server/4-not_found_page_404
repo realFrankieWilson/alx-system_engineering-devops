@@ -8,7 +8,7 @@ sudo apt-get install -y nginx
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Customized 404 message
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+echo ""Ceci n'est pas une page > /usr/share/nginx/html/404.html
 
 # The redirection site
 str_rep="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
