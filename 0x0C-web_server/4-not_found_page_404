@@ -11,7 +11,7 @@ echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
 
 str_rep="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
 
-errerpage="\n\terrer_page 404 \/404.html;\n\tlocation = 404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;}"
+errorpage="\n\terrer_page 404 \/404.html;\n\tlocation = 404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;}"
 sed -i "s/server_name _;/$str_rep$errorpage/" /etc/nginx/sites-available/default
 
 # Restart nginx server
