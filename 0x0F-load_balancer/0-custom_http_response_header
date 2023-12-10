@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# Configuration of Nginx HTTP custom header so it's same as web-01
+#	Header must be X-Served-By
+#	Value of the custom HTTP header must be the hostname of the server
+#	Nginx is running on.
+
+# Update and upgrade the packages.
+sudo apt-get -y update
+sudo apt-get -y upgrade
+
+# Install Nginx
+sudo apt-get install nginx
+
+# Allow nginx to listen to default port 80
+sudo ufw allow 'Ngnix HTTP'
+
+# Create a an html file with a content in it
+echo 'Hello World!' | sudo tee /var/www/html/index.html
+
+# A customised Error code.
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+# Server configurations
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	# Location of the html file
+	root /var/www/html;
+	# Contents
+	index index.html index.htm index.nginx.debian.html;
+	server_name _;
+	add_header X-Served-By \$hostname;
+	
+	# Location
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	if (\$request_filename ~ redirect_me){
+		rewrite ^ https://github.com/realfrankiewilson permanent;
+	}
+
+	# Error page
+	error_page 404/404.html;
+	location = /404.html {
+		internal;
+	}
+}"
+
+# Makes the configuration to this file
+echo "$server_config" | sudo /etc/nginx/sites-enabled/default
+
+# Restart nginx server
+sudo service nginx restart
