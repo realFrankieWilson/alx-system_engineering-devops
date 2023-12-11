@@ -12,7 +12,7 @@ sudo apt-get -y upgrade
 sudo apt-get install nginx
 
 # Allow nginx to listen to default port 80
-sudo ufw allow 'Ngnix HTTP'
+sudo ufw allow 'Nginx HTTP'
 
 # Create a an html file with a content in it
 echo 'Hello World!' | sudo tee /var/www/html/index.html
@@ -21,6 +21,7 @@ echo 'Hello World!' | sudo tee /var/www/html/index.html
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 # Server configurations
+server_config=\
 "server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -29,7 +30,7 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 	# Contents
 	index index.html index.htm index.nginx.debian.html;
 	server_name _;
-	add_header X-Served-By \$hostname;
+	add_header X-Served-By \$host;
 	
 	# Location
 	location / {
@@ -40,14 +41,14 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 	}
 
 	# Error page
-	error_page 404/404.html;
+	error_page 404 /404.html;
 	location = /404.html {
 		internal;
 	}
 }"
 
 # Makes the configuration to this file
-echo "$server_config" | sudo /etc/nginx/sites-enabled/default
+echo "$server_config" > /etc/nginx/sites-enabled/default
 
 # Restart nginx server
 sudo service nginx restart
