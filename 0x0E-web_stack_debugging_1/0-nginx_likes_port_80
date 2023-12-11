@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Configures Nginx  port 8080 to listen to port 80
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+sudo service nginx restart
