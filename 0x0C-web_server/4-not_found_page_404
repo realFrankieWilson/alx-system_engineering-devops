@@ -11,9 +11,9 @@ echo "Hello World!" | sudo tee /var/www/html/index.html
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
 
 # The redirection site
-str_rep="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+str_rep="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.github.com\/realfrankiewilson permanent;"
 
-errorpage="\n\terrer_page 404 \/404.html;\n\tlocation = 404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;}"
+errorpage="\n\terror_page 404 \/404.html;\n\tlocation = 404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;\n\t}"
 sed -i "s/server_name _;/$str_rep$errorpage/" /etc/nginx/sites-available/default
 
 # Restart nginx server
