@@ -30,7 +30,7 @@ server_config=\
 	# Contents
 	index index.html index.htm index.nginx.debian.html;
 	server_name _;
-	add_header X-Served-By \$host;
+	add_header X-Served-By \$hostname;
 	
 	# Location
 	location / {
