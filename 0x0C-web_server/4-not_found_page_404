@@ -3,18 +3,33 @@
 
 sudo apt-get -y update
 sudo apt-get install -y nginx
+sudo ufw allow 'Nginx HTTP'
 
 # Redirects a specific endpoint (eg: redirect_me to https://youtupe.com)
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Customized 404 message
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+# Configuration file
+sudo bash -c 'cat << EOF > /etc/nginx/sites-available/default
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
 
-# The redirection site
-str_rep="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.github.com\/realfrankiewilson\/ permanent;"
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
 
-errorpage="\n\terror_page 404 \/404.html;\n\tlocation = 404.html {\n\troot \/usr\/share\/nginx\/html;\n\tinternal;\n\t}"
-sed -i "s/server_name _;/$str_rep$errorpage/" /etc/nginx/sites-available/default
+        server_name _;
+        rewrite ^/redirect_me https://www.github.com/realfrankiewilson/ permanent;
+        error_page 404 /404.html;
+        location = /404.html {
+                root /usr/share/nginx/html;
+                internal;
+        }
+
+        location / {
+                try_files \$uri/ =404;
+        }
+}
+EOF'
 
 # Restart nginx server
 sudo service nginx restart
