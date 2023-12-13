@@ -21,15 +21,17 @@ echo 'Hello World!' | sudo tee /var/www/html/index.html
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 
 # Server configurations
-server_config=\
-"server {
+sudo bash -c 'cat << EOF > /etc/nginx/sites-available/default
+server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	# Location of the html file
 	root /var/www/html;
 	# Contents
 	index index.html index.htm index.nginx.debian.html;
+
 	server_name _;
+	# customized server head
 	add_header X-Served-By \$hostname;
 	
 	# Location
@@ -45,10 +47,8 @@ server_config=\
 	location = /404.html {
 		internal;
 	}
-}"
-
-# Makes the configuration to this file
-echo "$server_config" > /etc/nginx/sites-enabled/default
+}
+EOF'
 
 # Restart nginx server
 sudo service nginx restart
