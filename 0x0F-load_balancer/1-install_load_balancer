@@ -3,7 +3,8 @@
 sudo apt-get -y update
 sudo apt-get -y install haproxy
 
-config="\
+sudo bash -c 'cat << EOF >> /etc/haproxy/haproxy.cfg
+
 frontend my_frontend
 	bind *:80
 	mode http
@@ -13,5 +14,6 @@ backend my_backend
 	balance roundrobin
 	server 215597-web-01 34.224.2.243:80 check
 	server 215597-web-02 52.86.87.208:80 check
-echo "$config" | tee -a /etc/haproxy/haproxy.cfg
+EOF'
+
 sudo service haproxy restart
