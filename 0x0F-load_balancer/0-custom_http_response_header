@@ -32,7 +32,7 @@ server {
 
 	server_name _;
 	# customized server head
-	add_header X-Served-By \$hostname;
+	add_header X-Served-By $hostname;
 	
 	# Location
 	location / {
