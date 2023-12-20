@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 # A script that displays information about the subdomains.
-my_dn=(www lb-01 web-01 web-02)
-if [ "$#" -eq 1 ]
+prints () {
+	dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" | awk -F" " 'NR==2 { print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
+}
+if [ $# -eq 1 ];
 then
-	for dn in "${my_dn[@]}"
-	do
-		dig $dn."$1" | grep -A1 'ANSWER SECTION:' | tail -n1 | awk -vvar="$dn" '{print "The subdomain " var " is a " $4 " record and points to " $5}'
-	done
-elif [ "$#" -eq 2 ]
+	prints "www.$1" "www"
+	prints "lb-01.$1" "lb-01"
+	prints "web-01.$1" "web-01"
+	prints "web-02.$1" "web-02"
+elif [ $# -eq 2 ];
 then
-	dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -n1 | awk -vver="$2" '{print "The subdomain " var " is a " $4 " record and points to " $5}'
+	prints "$2.$1" "$2"
 fi
