@@ -1,9 +1,11 @@
-sudo apt install ufw.	# installs the ufw command
-sudo ufw default deny incoming	# denies all incoming traffic.
-sudo ufw default allow outgoing	# allows all outgoing.
+#!/usr/bin/env bash
+# Installs and sets up firewall
+sudo apt install ufw
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
 
-sudo ufw allow 22	# allows the SSH incoming traffic
-sudo ufw allow 443	# allows the HTTPS SSL traffic
-sudo ufw allow HTTP	# allows the HTTP traffic.
+sudo ufw allow 22
+sudo ufw allow 443
+sudo ufw allow HTTP
 
-sudo ufw enable		# enables the firewall
+sudo ufw enable
