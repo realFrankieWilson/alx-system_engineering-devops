@@ -2,8 +2,7 @@
 """
 A module that gets data from an api
 """
-import cvs
-import json
+from json import load
 import requests
 import sys
 
@@ -22,20 +21,13 @@ if __name__ == '__main__':
         req = req.json()
         return (req)
 
-    user_ = employee_info('users', ('id', sys.argv[1]))[0]
+    user_ = employee_info('users', ('id', sys.argv[1]))
     tasks_ = employee_info('todos', ('userId', sys.argv[1]))
+    completed = [i for i in tasks_ if i['completed']]
 
-    cvs_ = sys.argv[1] + '.csv'
-    with open(cvs_, 'w') as f:
-        file_ = csv.writer(
-                f,
-                delimiter=',',
-                quotechar='"',
-                quoting=csv.QUOTE_ALL
-                )
+    print('Employee {} is done with tasks({}/{}):'.format(
+        user_[0]['name'], len(completed), len(tasks_))
+        )
 
-        for i in tasks_:
-            file_.writerow([user_['id'],
-                           user_['username'],
-                           i['completed'],
-                           i['title']])
+    for task in completed:
+        print('\t {}'.format(task['title']))
