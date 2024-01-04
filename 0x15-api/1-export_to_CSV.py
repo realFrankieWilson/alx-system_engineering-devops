@@ -2,7 +2,7 @@
 """
 A module that gets data from an api
 """
-import cvs
+import csv
 import json
 import requests
 import sys
