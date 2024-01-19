@@ -1,31 +1,26 @@
 #!/usr/bin/python3
-"""
-A module that contains a method that returns a Reddit api
-of the subscribers activities
+"""Query Reddit API to determine subreddit sub count
 """
 
 import requests
 
 
 def top_ten(subreddit):
+    """Request top ten hot posts of subreddit
+    from Reddit API
     """
-    prints the titles of the 10 hottest posts of a given subreddit
-    """
 
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    headers = {'User-Agent': 'My User Agent 2.0'}
-    sub_obj = requests.get(url, allow_redirects=False, headers=headers)
+    user_agent = '0x16-api_advanced'
+    url = 'https://www.reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
 
-    if sub_obj:
-        obj_file = sub_obj.json()
-        res_data = obj_file.get('data').get('children')
+    headers = {'User-Agent': user_agent}
 
-        data_lists = []
+    r = requests.get(url, headers=headers, allow_redirects=False)
 
-        for i in res_data[:10]:
-            data_lists.append(i.get('data').get('title'))
-
-        for j in data_lists:
-            print(j)
-    else:
+    if r.status_code != 200:
         print('None')
+    else:
+        data = r.json()['data']
+        section = data['children']
+        for i in section:
+            print(i['data']['title'])
