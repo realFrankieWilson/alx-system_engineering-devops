@@ -13,6 +13,6 @@ def number_of_subscribers(subreddit):
                 }
             )
     # json_obj = sub.json()
-    if subscribe:
-        return (subscribe.json().get('data').get('subscribers'))
-    return 0
+    if subscribe.status_code == 404:
+        return 0
+    return (subscribe.json().get('data').get('subscribers'))
