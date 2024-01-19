@@ -1,33 +1,31 @@
 #!/usr/bin/python3
+"""
+A module that contains a method that quries the Reddit API
+and print the top 10 titles of a given reddit subscriber
+"""
+
 import requests
 
 
-def recurse(subreddit, hot_list=[], after_val=None):
+def recurse(subreddit, hot_list=[], after=None):
     """
-    A recursive function that queries the Reddit API and retuns a list
-    containing the titles of all hot artivlse for a given subeddit.
+    Returns list of titles containing all hot articles
     """
-    api_url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    subscribe = requests.get(
-            api_url, allow_redirects=False, headers={
-                'User-Agent': 'My User Agent 2.0'
-                },
-                params={
-                'limit': 100,
-                'after': after_val
-                }
-            )
-    if  subscribe.status_code == 200:
-        json_obj = subscribe.json()
-        sub_access = json_obj.get('data').get('children')
-        after_val = json_obj.get('data').get('after')
+    hder = {'User-Agent': 'User-Agent 2.0'}
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    nxt = {'after': after}    # Next_page
 
-        for i in sub_access[:10]:
-            hot_list.append(i.get('data').get('title'))
+    resp = requests.get(url, headers=hder, params=nxt, allow_redirects=False)
 
-        if not after_val:
-        	return (hot_list)
+    if not resp:
+        # print('None')
+        return
 
-        return (recurse(subreddit, hot_list, after_val))
-
-    return (None)
+    for sub in resp.json().get('data').get('children'):
+        data = sub.get('data')
+        title = data.get('title')
+        hot_list.append(title)
+    after = resp.json().get('data').get('after')
+    if after is None:
+        return hot_list
+    return recurse(subreddit, hot_list, after)
