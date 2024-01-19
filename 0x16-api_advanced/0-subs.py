@@ -11,14 +11,13 @@ def number_of_subscribers(subreddit):
     """
     Returns the number of subscribers for a given given subreddit
     """
-    user_agent = 'User Agent'
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
 
-    headers = {'User-Agent': user_agent}
+    headers = {'User-Agent': 'User-Agent 2.0'}
 
-    resp = requests.get(url, headers=headers, allow_redirects=False)
+    resp = requests.get(url.format(subreddit), headers, allow_redirects=False)
 
-    if not resp:
-        return 0
-    data = resp.json().get('data')
-    return data.get('subscribers')
+    if resp:
+        data = resp.json().get('data').get('subscribers')
+        return data
+    return 0
