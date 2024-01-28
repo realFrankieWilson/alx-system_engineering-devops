@@ -1,0 +1,41 @@
+# The default server configuartion settings
+
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	# web-01 server ip
+	server_name 18.207.142.8;
+
+
+	location /hbnb_static/ {
+		alias /data/web_static/current/;
+		autoindex off;
+	}
+	
+
+	root /var/www/html;
+
+
+	# Add index.php to the list if you are using PHP
+	# index index.html index.htm index.nginx-debian.html;
+
+
+	# Customised http header response
+	server_name _;
+	add_header X-Served-By $hostname;
+	
+	# File location
+	
+	location = /airbnb-onepage/ {
+		proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+	}
+
+	# Error message
+	location /404 {
+		# as directory, then fall back to displaying a 404.
+		root /var/www/html;
+		internal;
+	}
+
+}
