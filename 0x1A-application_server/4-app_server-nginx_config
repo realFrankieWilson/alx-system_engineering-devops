@@ -1,0 +1,41 @@
+# The default server configuartion settings
+
+server {
+	listen 80 default_server; # responds to any request made via port 80
+	listen [::]:80 default_server;
+
+	# web-01 server ip
+	server_name 18.207.142.8;
+
+	# Customised http header response
+	server_name _;
+	add_header X-Served-By $hostname;
+	
+	# File location and service
+	
+	# Searves the airbnb-onepage
+	location = /airbnb-onepage/ {
+		proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+	}
+
+	# Serves the number odd or even route
+	location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+		proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+	}
+
+	# AirBnB v3 config.
+	location /api {
+		proxy_pass http://127.0.0.1:5002/api;
+		# The $request_uri is a variable to pass the original request uri to the
+		# proxied server
+	}
+
+	# Error message
+	error_page 404 /404.html;
+	location /404 {
+		# as directory, then fall back to displaying a 404.
+		root /var/www/html;
+		internal;
+	}
+
+}
