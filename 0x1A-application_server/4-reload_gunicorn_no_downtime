@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Gracefully reloads gunicorn app.
 
-pgrep gunicorn | xarga kill -HUP
+pgrep gunicorn | xargs kill -HUP
