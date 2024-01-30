@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
 # Gracefully reloads gunicorn app.
 
-pgrep gunicorn | xargs kill -HUP
+pro_id=$(pgrep gunicorn | head -n 1)
+worker=($(pgrep -p "$pro_id"))
+
+# kill each process in orderly manner
+for worker in "${worker[@]}"
+do
+	kill -SIGHUP "$worker"
+done
