@@ -5,30 +5,37 @@ sudo apt-get -y update
 sudo apt-get install -y nginx
 sudo ufw allow 'Nginx HTTP'
 
-# Redirects a specific endpoint (eg: redirect_me to https://youtupe.com)
+# input text to index.html file
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Configuration file
 sudo bash -c 'cat << EOF > /etc/nginx/sites-available/default
 server {
-        listen 80 default_server;
+	listen 80 default_server;
         listen [::]:80 default_server;
 
         root /var/www/html;
         index index.html index.htm index.nginx-debian.html;
 
         server_name _;
-        rewrite ^/redirect_me https://www.github.com/realfrankiewilson/ permanent;
-        error_page 404 /404.html;
-        location = /404.html {
-                root /var/www/html;
-                internal;
-        }
 
         location / {
-                try_files $uri $uri/ =404;
+            try_files $uri $uri/ =404;
         }
+
+	location /redirect_me {
+		rewrite ^/redirect_me https://www.github.com/realfrankiewilson/ permanent;
+	}
+
+	error_page 404 /404.html;
+	location = /404.html {
+		root /var/www/html;
+		internal;
+	}
+
+
 }
+
 EOF'
 
 # Restart nginx server
