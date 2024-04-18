@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # ss - i /path/to/private_key  username@server_ip_addrese the i parameter enforces the path to the private key.
 
-ssh -i ~/.ssh/school ubuntu@18.207.142.8
+ssh -i ~/.ssh/school ubuntu@34.229.189.176
